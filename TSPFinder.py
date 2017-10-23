@@ -18,6 +18,7 @@ class TSPFinder:
         shortest_path = [[float("inf")] * self.num_edges for i in range(0, 2**self.num_edges-1)]
         shortest_path[0][0] = 0
         for m in range(2,self.num_edges+1):
+            print(m)
             for s in self.set_iterator(m):
                 for j in self.vertex_iterator(s):
                     if j == 0:

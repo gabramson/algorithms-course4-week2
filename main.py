@@ -2,6 +2,7 @@
 """
 Module Docstring
 """
+import math
 import TSPFinder
 
 __author__ = "Your Name"
@@ -21,8 +22,13 @@ def main():
         points[i][0] = float(values[0])
         points[i][1] = float(values[1])
         i += 1
-    points[0] = 1
+    for i in range(vertices-1):
+        for j in range(i+1, vertices):
+            tsp_finder.add_edge(i,j, distance(points[i][0], points[i][1], points[j][0], points[j][1]))
+    print(tsp_finder.get_shortest_tour())
 
+def distance(x1, x2, y1, y2):
+    return math.sqrt((x1-y1)**2 + (x2-y2)**2)
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
